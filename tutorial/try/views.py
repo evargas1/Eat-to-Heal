@@ -57,7 +57,7 @@ def login(request):
 
             if user is not None:
                 auth_login(request, user)
-                return HttpResponseRedirect(reverse('dashboard'))
+                return HttpResponseRedirect(reverse('try/dashboard'))
             else:
                 messages.info(request, "username or password is incorrect")
     # configure and can see
