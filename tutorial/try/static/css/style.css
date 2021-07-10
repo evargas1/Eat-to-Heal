@@ -1045,3 +1045,6 @@ padding-bottom: 20px;
 .help-text{
     padding: 20px !important;
 }
+body{
+    min-height: 100vh;
+}
