@@ -36,8 +36,13 @@ def contact(request):
     return render(request, 'try/contact.html', {'form': form})
     # configure and can see
     
-
+@login_required(login_url='/login/')
 def dashboard(request):
+    if request.method == 'POST':
+        auth_logout(request)
+
+        return redirect('/login/')
+
     return render(request, 'try/dashboard.html', context={})
 
 def login(request):
@@ -56,7 +61,7 @@ def login(request):
 
             if user is not None:
                 auth_login(request, user)
-                return redirect('/dashboard/')
+                return HttpResponseRedirect(reverse('dashboard'))
             else:
                 messages.info(request, "username or password is incorrect")
     # configure and can see
@@ -74,7 +79,7 @@ def register(request):
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
-                return HttpResponseRedirect(reverse('thanks'))
+                return HttpResponseRedirect(reverse('dashboard'))
         else:
             formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})

@@ -8,6 +8,12 @@
   <div class="small-container">
     <div class="name-w">
       <h1>Welcome Jack!</h1>
+      <form method="post" action="">
+        {% csrf_token %}
+        
+
+        <input type="submit" value="Logout">
+    </form>
     </div>
   </div>
 </div>
