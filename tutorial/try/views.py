@@ -7,6 +7,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact, ContactForm
 # Create your views here.
@@ -56,7 +57,7 @@ def login(request):
 
             if user is not None:
                 auth_login(request, user)
-                return redirect('/dashboard/')
+                return HttpResponseRedirect(reverse('dashboard'))
             else:
                 messages.info(request, "username or password is incorrect")
     # configure and can see
