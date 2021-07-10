@@ -73,7 +73,7 @@ def register(request):
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
-                login_auth(request, user)
+                login(request, user)
                 return HttpResponseRedirect(reverse('thanks'))
         else:
             formIn = SignUpForm
