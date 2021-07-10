@@ -1031,3 +1031,11 @@ padding-bottom: 20px;
 .dashboard{
     background-color: rgb(211, 171, 199);
 }
+
+/* contact form styling for buttons */
+.form-sec input{
+    padding: 10px 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 150px;
+}
