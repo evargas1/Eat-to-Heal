@@ -72,7 +72,7 @@
         <!-- <div class="toggle"></div> -->
       </header>
 
-      <video src="./img/video.mp4" muted loop autoplay></video>
+      <video src="{% static './img/video.mp4' %}" muted loop autoplay></video>
       <div class="overlayy"></div>
       <!-- <div class="text">
         <h2>Health </h2>
@@ -114,7 +114,7 @@
      <div class="row">
        <div class="col-3 box">
          <!-- simple logo image -->
-         <img src="./img/all_online.png" width="100px
+         <img src="{% static './img/all_online.png' %}" width="100px
          " alt="">
          <h3>Virtual Consulation</h3>
          <p>Due to the pandemic all of our consulations are currently taking place online to protect our health and your. Application form will explain further.
@@ -126,7 +126,7 @@
 
        <div class="col-3 box">
         <!-- simple logo image -->
-        <img src="./img/wave.png" width="100px
+        <img src="{% static './img/wave.png' %}" width="100px
         " alt="">
         <h3>Frequency Therapy</h3>
         <p>New research has proved that wave frequeny cna be used to help the body heal itself. We are strong advocates for this technology and are confident that it is the future!
@@ -137,7 +137,7 @@
 
       <div class="col-3 box">
         <!-- simple logo image -->
-        <img src="./img/personal-shopper.png" width="100px
+        <img src="{% static './img/personal-shopper.png' %}" width="100px
         " alt="">
         <h3>Personal Shopper</h3>
         <p>Shopping and plannine meals is difficult we provide new services to have a certified nutrionist join you shopping. There are may benefits to shopping local. </p>
@@ -155,7 +155,7 @@
   <div class="large-conatiner">
     <div class="row">
       <div class="col-2-l">
-        <img src="./img/healthy.jpg" width="100%" alt="">
+        <img src="{% static './img/healthy.jpg' %}" width="100%" alt="">
       </div>
       <div class="col-2-l padding-b">
         <h2>Healing Physically <br> and Spirtually, <br> Starts Here</h2>
@@ -181,7 +181,7 @@
     <div class="row">
       <div class="col-4 border-side">
         <div class="container">
-          <img src="./img/corona.png" alt="Norway" style="width:100%;">
+          <img src="{% static './img/corona.png' %}" alt="Norway" style="width:100%;">
           <div class="text-block"> 
             <h4>Cornovirus</h4>
             
@@ -192,7 +192,7 @@
 
       <div class="col-4 border-side">
         <div class="container">
-          <img src="./img/food-cc.png" alt="Norway" style="width:100%;">
+          <img src="{% static './img/food-cc.png' %}" alt="Norway" style="width:100%;">
           <div class="text-block food-c"> 
             <h4>Nutrion</h4>
           </div>
@@ -202,7 +202,7 @@
 
       <div class="col-4 border-side">
         <div class="container">
-          <img src="./img/women_kids.png" alt="Norway" style="width:100%;">
+          <img src="{% static './img/women_kids.png' %}" alt="Norway" style="width:100%;">
           <div class="text-block women"> 
             <h4>Parenthood</h4>
           </div>
@@ -212,7 +212,7 @@
 
       <div class="col-4 border-side">
         <div class="container">
-          <img src="./img/free!.png" alt="Norway" style="width:100%;">
+          <img src="{% static './img/free!.png' %}" alt="Norway" style="width:100%;">
           <div class="text-block free"> 
             <h4>Womens Health</h4>
           </div>
@@ -280,14 +280,15 @@
         <h3>Dietitian</h3>
         <p>
           A registered dietitian is a nutrition professional who is the most credible and objective source of nutrition information. They are trained in nutrition to prevent disease. Registered Dietitian Nutritionists (RDN) must complete a four year program in Nutrition from an accredited University.</p>
-        <img src="./img/Dietian.png" width="100%"  alt="">
+        <img src="{% static './img/Dietian.png' %}" width="100%"  alt="">
       </div>
 
       <div class="col-2-e">
         <h3>Nutritionist</h3>
         <p>
           In clinical practice, a specialist in nutrition. Nutritionists can help patients with special needs, allergies, health problems, or a desire for increased energy or weight change devise healthy diets. Some nutritionists in private practice are well- trained, hold a degree and are licensed.</p>
-        <img src="./img/Nurt.png" width="100%" alt="">
+        
+        <img src="{% static './img/Nurt.png' %}" width="100%" alt="">
       </div>
 
     </div>
@@ -300,27 +301,27 @@
     <div class="row">
       <div class="col-6">
         <h2>Apples</h2>
-        <img src="./img/apples.jpg" width="100%" alt="">
+        <img src="{% static './img/apples.jpg' %}" width="100%" alt="">
       </div>
       <div class="col-6">
         <h2>Carrots</h2>
-        <img src="./img/carrot.jpg" width="100%"   alt="">
+        <img src="{% static './img/carrot.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Beets</h2>
-        <img src="./img/beets.jpg" width="100%"   alt="">
+        <img src="{% static './img/beets.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Grapes</h2>
-        <img src="./img/grape.jpg" width="100%"   alt="">
+        <img src="{% static './img/grape.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Blueberries</h2>
-        <img src="./img/blub.jpg" width="100%"  alt="">
+        <img src="{% static './img/blub.jpg' %}" width="100%"  alt="">
       </div>
       <div class="col-6">
         <h2>Broccoli</h2>
-        <img src="./img/broccoli .jpg" width="100%"  alt="">
+        <img src="{% static './img/broccoli .jpg' %}" width="100%"  alt="">
       </div>
     </div>
   </div>
@@ -330,27 +331,27 @@
     <div class="row">
       <div class="col-6">
         <h2>Garlic</h2>
-        <img src="./img/garlic.jpg" width="100%" alt="">
+        <img src="{% static './img/garlic.jpg' %}" width="100%" alt="">
       </div>
       <div class="col-6">
         <h2>Green Beans</h2>
-        <img src="./img/green_beans.jpg" width="100%"   alt="">
+        <img src="{% static './img/green_beans.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Corn</h2>
-        <img src="./img/corn.jpg" width="100%"   alt="">
+        <img src="{% static './img/corn.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Celery</h2>
-        <img src="./img/celery.jpg" width="100%"   alt="">
+        <img src="{% static './img/celery.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Cauliflower</h2>
-        <img src="./img/Cauliflower .jpg" width="100%"  alt="">
+        <img src="{% static './img/Cauliflower .jpg' %}" width="100%"  alt="">
       </div>
       <div class="col-6">
         <h2>Cantaloupe</h2>
-        <img src="./img/cantaloupe.jpg" width="100%"  alt="">
+        <img src="{% static './img/cantaloupe.jpg' %}" width="100%"  alt="">
       </div>
     </div>
   </div>
@@ -364,23 +365,23 @@
       </div>
       <div class="col-6">
         <h2>Kale</h2>
-        <img src="./img/kale.jpg" width="100%"   alt="">
+        <img src="{% static './img/kale.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Sprouts</h2>
-        <img src="./img/sprouts.jpg" width="100%"   alt="">
+        <img src="{% static './img/sprouts.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Shallots</h2>
-        <img src="./img/shallots.jpg" width="100%"   alt="">
+        <img src="{% static './img/shallots.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Endive</h2>
-        <img src="./img/endive.jpg" width="100%"  alt="">
+        <img src="{% static './img/endive.jpg' %}" width="100%"  alt="">
       </div>
       <div class="col-6">
         <h2>Mushrooms</h2>
-        <img src="./img/mushrooms.jpg" width="100%"  alt="">
+        <img src="{% static './img/mushrooms.jpg' %}" width="100%"  alt="">
       </div>
     </div>
   </div>
@@ -390,27 +391,27 @@
     <div class="row">
       <div class="col-6">
         <h2>Apples</h2>
-        <img src="./img/apples.jpg" width="100%" alt="">
+        <img src="{% static './img/apples.jpg' %}" width="100%" alt="">
       </div>
       <div class="col-6">
         <h2>Carrots</h2>
-        <img src="./img/carrot.jpg" width="100%"   alt="">
+        <img src="{% static './img/carrot.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Beets</h2>
-        <img src="./img/beets.jpg" width="100%"   alt="">
+        <img src="{% static './img/beets.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Grapes</h2>
-        <img src="./img/grape.jpg" width="100%"   alt="">
+        <img src="{% static './img/grape.jpg' %}" width="100%"   alt="">
       </div>
       <div class="col-6">
         <h2>Blueberries</h2>
-        <img src="./img/blub.jpg" width="100%"  alt="">
+        <img src="{% static './img/blub.jpg' %}" width="100%"  alt="">
       </div>
       <div class="col-6">
         <h2>Broccoli</h2>
-        <img src="./img/broccoli .jpg" width="100%"  alt="">
+        <img src="{% static './img/broccoli .jpg' %}" width="100%"  alt="">
       </div>
     </div>
   </div>
@@ -433,7 +434,7 @@
   <div class="small-container">
     <div class="row">
       <div class="col-3-l">
-        <img src="./img/bosssss1.png" 
+        <img src="{% static './img/bosssss1.png' %}" 
         alt="">
         <div class="info">
           <div class="name"><h1>Janes Eversen</h1></div>
@@ -442,7 +443,7 @@
       </div>
 
       <div class="col-3-l">
-        <img src="./img/bosssss2.png" 
+        <img src="{% static './img/bosssss2.png' %}" 
         alt="">
         <div class="info">
           <div class="name"><h1>Kelly Miles</h1></div>
@@ -451,7 +452,7 @@
       </div>
 
       <div class="col-3-l">
-        <img src="./img/bosssss3.png" 
+        <img src="{% static './img/bosssss3.png' %}" 
          alt="">
         <div class="info">
           <div class="name"><h1>Brando Jay, MD</h1></div>
@@ -465,7 +466,7 @@
 </div>
 
 <div class="hoz-banner">
-  <img src="./img/Post-8.png" alt="">
+  <img src="{% static './img/Post-8.png' %}" alt="">
   
 </div>
 
