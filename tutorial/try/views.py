@@ -1,5 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
+import requests
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact, ContactForm
 # Create your views here.
