@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-
+from .forms import SignUpForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
@@ -63,5 +63,18 @@ def login(request):
     return render(request, 'try/login.html', {'form':form})
 
 def register(request):
-    # configure and can see
-    return render(request, 'try/register.html', context={})
+    if request.user.is_authenticated:
+        return redirect('/dashboard/')
+    else:
+        if request.method == 'POST':
+            formIn = SignUpForm(request.POST)
+            if formIn.is_valid():
+                formIn.save()
+                username = formIn.cleaned_data.get('username')
+                raw_password = formIn.cleaned_data.get('password1')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            formIn = SignUpForm
+    return render(request, 'try/register.html', {'formIn': formIn})
