@@ -35,12 +35,10 @@ class ContactForm(ModelForm):
             'subject':_('Inquring About'),
             'sender':_('Email Address'),
         }
-        help_texts = {
-            'sender':_('We will contact you soon'),
-        }
+        
         error_messages = {
             'name': {
-                'max_length':_("Just you first name will suffice!"),
+                'max_length':_("Just your first name will suffice!"),
             },
         }
 
