@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
@@ -75,7 +74,7 @@ def register(request):
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 login_auth(request, user)
-                return redirect('/dashboard/')
+                return HttpResponseRedirect(reverse('thanks'))
         else:
             formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
