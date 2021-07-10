@@ -73,7 +73,7 @@ def register(request):
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
-                login(request, user)
+                login_auth(request, user)
                 return redirect('/dashboard/')
         else:
             formIn = SignUpForm
