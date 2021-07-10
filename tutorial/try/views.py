@@ -34,8 +34,26 @@ def dashboard(request):
     return render(request, 'try/dashboard.html', context={})
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/dashboard/')
+    else:
+
+        form = AuthenticationForm()
+    
+        if request.method == 'POST':
+
+            username = request.POST['username']
+            password = request.POST['password']
+            # check if user is in database
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                auth_login(request, user)
+                return redirect('/dashboard/')
+            else:
+                messages.info(request, "username or password is incorrect")
     # configure and can see
-    return render(request, 'try/login.html', context={})
+    return render(request, 'try/login.html', {'form':form})
 
 def register(request):
     # configure and can see

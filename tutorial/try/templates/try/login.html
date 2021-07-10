@@ -13,6 +13,9 @@
   <div class="form-sec">
     <form action="POST">
 
+        {% csrf_token %}
+        {{ form }}
+
       <input class="submit-butt" type="submit" value="Submit">
       <p>Don't Have an Account?</p>
       <div class="butt-center">
