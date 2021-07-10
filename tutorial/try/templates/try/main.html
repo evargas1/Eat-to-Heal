@@ -29,10 +29,10 @@
 
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="{ url 'index' }">Home</a>
-                <a href="{ url 'aboutus' }">About us</a>
-                <a href="{ url 'contact' }">Contact us</a>
-                <a href="{ url 'login'}">Login</a>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'aboutus' %}">About us</a>
+                <a href="{% url 'contact' %}">Contact us</a>
+                <a href="{% url 'login' %}">Login</a>
                 
               </div>
   
@@ -56,10 +56,10 @@
         
         <div class="menu-sec">
             <ul>
-              <li><a href="{ url 'index' }">Home</a></li>
-              <li><a href="{ url 'aboutus' }">About Us</a></li>
-              <li><a href="{ url 'contact'}">Contact</a></li>
-              <li><a href="{ url 'login' }">Login</a></li>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'aboutus' %}">About Us</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+              <li><a href="{% url 'Login' %}">Login</a></li>
     
     
             </ul>
