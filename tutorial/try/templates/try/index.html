@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <!-- ready for depoloyment! -->
@@ -13,7 +15,7 @@
     <script
     src="https://kit.fontawesome.com/88ea6b8356.js"
     crossorigin="anonymous" ></script>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
   <body>
       
@@ -33,14 +35,13 @@
         <div class="respon-menu">
 
           <div id="mySidenav" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <a href="./index.html">Home</a>
-              <a href="./about-us.html">About</a>
-              <a href="#">Sustainablility</a>
-  
-              <a href="#">Products</a>
-              <a href="#">Cart</a>
-            </div>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'aboutus' %}">About us</a>
+                <a href="{% url 'contact' %}">Contact us</a>
+                <a href="{% url 'login' %}">Login</a>
+                
+              </div>
 
             <div class="meny-butt">
               <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -60,12 +61,10 @@
         <div class="col-2 none">
           <div class="menu-sec">
             <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./about-us.html">About Us</a></li>
-              <li><a href="./contact.html">Contact</a></li>
-              <li><a href="./login.html">Login</a></li>
-
-
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'aboutus' %}">About Us</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
             </ul>
           </div>
         </div>
