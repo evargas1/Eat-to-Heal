@@ -60,7 +60,7 @@ def login(request):
             user = authenticate(username=username, password=password)
 
             if user is not None:
-                auth_login(request, user)
+                login(request, user)
                 return HttpResponseRedirect(reverse('dashboard'))
             else:
                 messages.info(request, "username or password is incorrect")
