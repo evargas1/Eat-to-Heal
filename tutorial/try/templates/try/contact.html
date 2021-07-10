@@ -31,23 +31,11 @@
     
   </div>
   <div class="form-sec">
-    <form action="POST" id="form">
+    <form action="POST" >
 
         {% csrf_token %}
 
-        <div id="user-info">
-          <!-- the user will be prompoted to enter personal infomation -->
-          <div class="form-field2">
-              <input required class="form-control" type="text" name="name" placeholder="Name...">
-          </div>
-          <div class="form-field2">
-            <select required name="subject" id="id_subject"></select>
-          </div>
-          <div class="form-field2">
-              <input required class="form-control" type="email" name="sender" placeholder="Email...">
-          </div>
-
-      </div>
+        {{ form }}
 
       <div class="add-space">
         <input class="submit-butt" type="submit" value="Submit">
