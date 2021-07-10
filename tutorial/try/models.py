@@ -30,11 +30,11 @@ class ContactForm(ModelForm):
     class Meta:
         model= Contact
         fields = ('name', 'subject', 'sender')
-        labels = {
-            'name':_('Full Name'),
-            'subject':_('Inquring About'),
-            'sender':_('Email Address'),
-        }
+        # labels = {
+        #     'name':_('Full Name'),
+        #     'subject':_('Inquring About'),
+        #     'sender':_('Email Address'),
+        # }
         
         error_messages = {
             'name': {

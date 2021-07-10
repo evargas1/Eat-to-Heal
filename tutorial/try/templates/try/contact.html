@@ -4,7 +4,7 @@
 {% block content %}
 
 
-
+{% comment %} 
 <div class="box" id="form-wrapper">
   <form action="" id="form">
       <div id="user-info">
@@ -21,7 +21,7 @@
       <input id="form-button" class="btn-success" type="submit" value="Continue">
   </form>
 
-</div>
+</div> {% endcomment %}
 
 
 
@@ -31,10 +31,23 @@
     
   </div>
   <div class="form-sec">
-    <form action="POST">
+    <form action="POST" id="form">
 
         {% csrf_token %}
-        {{ form }}
+
+        <div id="user-info">
+          <!-- the user will be prompoted to enter personal infomation -->
+          <div class="form-field2">
+              <input required class="form-control" type="text" name="name" placeholder="Name...">
+          </div>
+          <div class="form-field2">
+            <select required name="subject" id="id_subject"></select>
+          </div>
+          <div class="form-field2">
+              <input required class="form-control" type="email" name="email" placeholder="Email...">
+          </div>
+
+      </div>
 
       <div class="add-space">
         <input class="submit-butt" type="submit" value="Submit">
