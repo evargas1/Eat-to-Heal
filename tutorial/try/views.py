@@ -12,7 +12,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact, ContactForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from .forms import SignUpForm
+# from .forms import SignUpForm
 
 # Create your views here.
 def index(request):
