@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact, ContactForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from .forms import SignUpForm
 
 # Create your views here.
@@ -81,7 +81,7 @@ def signup(request):
             user.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
-            login(request, user)
+            auth_login(request, user)
             return redirect('')
     else:
         form = SignUpForm()
