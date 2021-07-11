@@ -10,6 +10,10 @@ import requests
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact, ContactForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm
+
 # Create your views here.
 def index(request):
     return render(request, 'try/index.html', context={})
@@ -68,19 +72,18 @@ def login(request):
     # configure and can see
     return render(request, 'try/login.html', {'form':form})
 
-def register(request):
-    if request.user.is_authenticated:
-        return redirect('/dashboard/')
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('index')
     else:
-        if request.method == 'POST':
-            formIn = SignUpForm(request.POST)
-            if formIn.is_valid():
-                formIn.save()
-                username = formIn.cleaned_data.get('username')
-                raw_password = formIn.cleaned_data.get('password1')
-                user = authenticate(username=username, password=raw_password)
-                login(request, user)
-                return HttpResponseRedirect(reverse('dashboard'))
-        else:
-            formIn = SignUpForm
-    return render(request, 'try/register.html', {'formIn': formIn})
+        form = SignUpForm()
+
+    return render(request, 'try/register.html', {'form': form})
