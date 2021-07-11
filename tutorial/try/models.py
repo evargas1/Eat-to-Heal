@@ -45,6 +45,6 @@ class ContactForm(ModelForm):
 
 
 
-class CustomUser(AbstractUser):
-    full_name = models.CharField(max_length=100, blank=False)
-    email = forms.EmailField(max_length=254)
+# class CustomUser(AbstractUser):
+#     full_name = models.CharField(max_length=100, blank=False)
+#     email = forms.EmailField(max_length=254)

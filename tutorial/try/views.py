@@ -74,16 +74,16 @@ def login(request):
 
 
 def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            user.save()
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            auth_login(request, user)
-            return redirect('')
-    else:
-        form = SignUpForm()
+    # if request.method == 'POST':
+    #     form = SignUpForm(request.POST)
+    #     if form.is_valid():
+    #         user = form.save()
+    #         user.save()
+    #         raw_password = form.cleaned_data.get('password1')
+    #         user = authenticate(username=user.username, password=raw_password)
+    #         auth_login(request, user)
+    #         return redirect('')
+    # else:
+    #     form = SignUpForm()
 
-    return render(request, 'try/register.html', {'form': form})
+    return render(request, 'try/register.html', {})
