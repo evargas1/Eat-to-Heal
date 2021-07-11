@@ -40,7 +40,7 @@ def contact(request):
         form = ContactForm()
 
 
-    return render(request, 'try/contact.html', {'form': form})
+    return render(request, 'try/contact.html', {'form': form}, context_instance=RequestContext(request))
     # configure and can see
     
 @login_required(login_url='/login/')
