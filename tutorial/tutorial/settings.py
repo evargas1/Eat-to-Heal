@@ -29,7 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['159.203.189.14', 'www.roxyeattoheal.com', 'roxyeattoheal.com']
 
-AUTH_USER_MODEL = 'authen.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
