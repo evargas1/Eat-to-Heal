@@ -24,10 +24,12 @@ def aboutus(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-
+        form = AbsenceForm(request.POST)
+        form
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
             # some sort of action needs to be performed here
             # (1) save data
             # (2) send an email ####
