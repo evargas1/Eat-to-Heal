@@ -24,7 +24,7 @@ def aboutus(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = AbsenceForm(request.POST)
+        form = ContactForm()(request.POST)
         form
         if form.is_valid():
             instance = form.save(commit=False)
