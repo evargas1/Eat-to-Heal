@@ -33,7 +33,7 @@ def contact(request):
             # (2) send an email ####
             # (3) return search result
             # (4) upload a file
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse(''))
     else:
         form = ContactForm()
 
