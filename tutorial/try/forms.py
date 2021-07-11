@@ -1,23 +1,19 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+from .models import CustomUser
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
+    full_name = forms.CharField(max_length=100, help_text='Required. 100 charaters of fewer.')
     email = forms.EmailField(max_length=254)
 
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        model = CustomUser
+        fields = UserCreationForm.Meta.fields + ('full_name', 'email',)
 
-    def save(self, commit=True):
-        # Save the provided password in hashed format
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        if commit:
-            user.save()
-        return user
+    
 # you do not have to register this in the admin panel
 # it will automatically appear. 
