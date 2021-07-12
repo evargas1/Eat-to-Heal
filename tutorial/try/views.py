@@ -38,13 +38,13 @@ def signup(request):
         if request.method == 'POST':
             formIn = SignUpForm(request.POST)
             if formIn.is_valid():
-                
+                formIn.save()
                 
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
-                formIn.save()
+                
                 return HttpResponseRedirect('/login/')
             else:
                  formIn = SignUpForm
