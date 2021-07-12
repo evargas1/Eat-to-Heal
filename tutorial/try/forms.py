@@ -73,5 +73,12 @@ class SignUpForm(forms.Form):
 
         return email
 
+    def save(self, *args, **kwargs):
+        u = self.instance.user
+        u.first_name = self.cleaned_data['username']
+        u.last_name = self.cleaned_data['password1']
+        u.save()
+        return super(SignUpForm, self).save(*args, **kwargs)
+
 
 
