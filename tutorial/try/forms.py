@@ -16,7 +16,9 @@ class SignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         # Save the provided password in hashed format
-        user = super().save(commit=False)
+        user = super(SignUpForm, self).save(commit=False)
+        user.username(self.cleaned_data['username'])
+        user.email(self.cleaned_data['email'])
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
