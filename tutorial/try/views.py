@@ -20,7 +20,7 @@ def index(request):
     return render(request, 'try/index.html', context)
 
 def login(request):
-
+    form = AuthorForm
     if request.method == 'POST':
         form = AuthorForm(request.POST)
 
