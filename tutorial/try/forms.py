@@ -22,11 +22,3 @@ class SignUpForm(UserCreationForm):
             user.save()
         return user
 
-class NameForm(forms.Form):
-    your_name = forms.CharField(label='Your Name', max_length=100)
-
-class ContactForm(ModelForm):
-    class Meta:
-        model = Contact
-        fields = '__all__'
-

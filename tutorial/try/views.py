@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm, ContactForm
+from .forms import SignUpForm
 from django.core.mail import send_mail
 from django.urls import reverse
 # from .models import Contact, ContactForm, Blog
@@ -12,8 +12,8 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import NameForm
-from .models import AuthorForm
+from .forms import SignUpForm
+
 
 def index(request):
     context = {}
@@ -26,22 +26,13 @@ def login(request):
 
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/login/')
 
-        
-    form = ContactForm()
-   
-    
-    return render(request, 'try/contact.html', {'form': form})
+    return render(request, 'try/contact.html', {})
 
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('/contact/')
+        return HttpResponseRedirect('/login/')
     else:
         if request.method == 'POST':
             formIn = SignUpForm(request.POST)
@@ -53,7 +44,7 @@ def signup(request):
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
                 formIn.save(using='db2')
-                return HttpResponseRedirect(reverse('contact'))
+                return HttpResponseRedirect('/login/')
             else:
                  formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
