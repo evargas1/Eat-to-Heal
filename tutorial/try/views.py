@@ -33,7 +33,7 @@ def signup(request):
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
-                auth_login(request, user)
+                login(request, user)
                 formIn.save(using='db2')
             return HttpResponseRedirect(reverse('contact'))
         else:
