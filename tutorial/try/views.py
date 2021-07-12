@@ -10,10 +10,12 @@ from django.urls import reverse
 import requests
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpForm
 
+User = get_user_model()
 
 def index(request):
     context = {}
@@ -60,9 +62,8 @@ def signup(request):
 
         if user != None:
             auth_login(request, user)
-            form.save(commit=false)  
-            form.user = user          
-            form.save()
+            # form.save(commit=false)  
+            
             # attempt = request.session.get("attemplt") or 0
             # request.session['attempt'] += 1
             
