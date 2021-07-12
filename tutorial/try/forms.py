@@ -60,7 +60,7 @@ class SignUpForm(forms.Form):
     def clean_username(self):
         username = self.cleaned_data.get("username")
         qs = User.objects.filter(username__iexact=username)
-        qs.save()
+        # qs.save()
         if qs.exists():
             raise forms.ValidationError("This is an invalid username")
 
@@ -69,18 +69,18 @@ class SignUpForm(forms.Form):
     def clean_email(self):
         email = self.cleaned_data.get("email")
         qs = User.objects.filter(email__iexact=email)
-        qs.save()
+        # qs.save()
         if qs.exists():
             raise forms.ValidationError("This is an invalid email")
 
         return email
 
-    def save(self, *args, **kwargs):
-        u = self.instance.user
-        u.first_name = self.cleaned_data['username']
-        u.last_name = self.cleaned_data['password1']
-        u.save()
-        return super(SignUpForm, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     u = self.instance.user
+    #     u.first_name = self.cleaned_data['username']
+    #     u.last_name = self.cleaned_data['password1']
+    #     u.save()
+    #     return super(SignUpForm, self).save(*args, **kwargs)
 
 
 
