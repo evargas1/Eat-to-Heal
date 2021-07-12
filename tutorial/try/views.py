@@ -23,40 +23,9 @@ def contact(request):
 
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('/welcome-back/')
+        return redirect('/contact/')
     else:
         if request.method == 'POST':
-<<<<<<< HEAD
-
-            username = request.POST['username']
-            password = request.POST['password']
-            # check if user is in database
-            user = authenticate(username=username, password=password)
-
-            if user is not None:
-                login_auth(request, user)
-                return redirect('/dashboard/')
-            else:
-                messages.info(request, "username or password is incorrect")
-    # configure and can see
-    return render(request, 'try/login.html', {'form':form})
-
-
-def signup(request):
-    # if request.method == 'POST':
-    #     form = SignUpForm(request.POST)
-    #     if form.is_valid():
-    #         user = form.save()
-    #         user.save()
-    #         raw_password = form.cleaned_data.get('password1')
-    #         user = authenticate(username=user.username, password=raw_password)
-    #         auth_login(request, user)
-    #         return redirect('')
-    # else:
-    #     form = SignUpForm()
-
-    return render(request, 'try/register.html', {})
-=======
             formIn = SignUpForm(request.POST)
             if formIn.is_valid():
                 formIn.save()
@@ -68,4 +37,5 @@ def signup(request):
         else:
             formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
->>>>>>> 43aed833a4ea1066b107400ac664c5c87b296cee
+
+    
