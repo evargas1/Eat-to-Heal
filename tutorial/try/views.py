@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
 from django.core.mail import send_mail
 from django.urls import reverse
-from .models import Contact, ContactForm, Blog
+# from .models import Contact, ContactForm, Blog
 import requests
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
