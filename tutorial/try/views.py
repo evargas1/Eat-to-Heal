@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, ContactForm
 from django.core.mail import send_mail
 from django.urls import reverse
 # from .models import Contact, ContactForm, Blog
@@ -20,29 +20,24 @@ def index(request):
     return render(request, 'try/index.html', context)
 
 def login(request):
-    form = AuthorForm
-    if request.method == 'POST':
-        form = AuthorForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-
-            return HttpResponseRedirect('/login/')
-    return render(request, 'try/login.html', {'form':form})
+    
+    return render(request, 'try/login.html', {})
 
 
 
 def contact(request):
     if request.method == 'POST':
-        # create a form instance
-        form = NameForm(request.POST)
-        # check to valid
+        form = ContactForm(request.POST)
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect('/login/')
-    else:
-        form = NameForm()
+
+        
+    form = ContactForm()
+   
     
-    return render(request, 'try/contact.html', {'form':form})
+    return render(request, 'try/contact.html', {'form': form})
+
 
 def signup(request):
     if request.user.is_authenticated:

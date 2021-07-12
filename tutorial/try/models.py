@@ -18,4 +18,12 @@ class Author(models.Model):
 class AuthorForm(ModelForm):
     model = Author
     fields = ['name', 'title', 'email']
+
+class Contact(models.Model):
+    email = models.EmailField(max_length=254)
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
         

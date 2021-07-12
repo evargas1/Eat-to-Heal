@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Contact
 
 
 class SignUpForm(UserCreationForm):
@@ -23,3 +24,9 @@ class SignUpForm(UserCreationForm):
 class NameForm(forms.Form):
     your_name = forms.CharField(label='Your Name', max_length=100)
 
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+
+        
