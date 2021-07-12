@@ -58,6 +58,9 @@ def signup(request):
 
         if user != None:
             auth_login(request, user)
+            form.save(commit=false)  
+            form.user = user          
+            form.save()
             # attempt = request.session.get("attemplt") or 0
             # request.session['attempt'] += 1
             
