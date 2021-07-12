@@ -13,14 +13,24 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import NameForm
+from .models import AuthorForm
 
 def index(request):
     context = {}
     return render(request, 'try/index.html', context)
 
 def login(request):
-    context = {}
-    return render(request, 'try/login.html', context)
+
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect('/login/')
+    return render(request, 'try/login.html', {'form':form})
+
+
 
 def contact(request):
     if request.method == 'POST':
