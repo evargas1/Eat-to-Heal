@@ -1,6 +1,6 @@
 {% extends 'try/main.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+
 {% block content %}
 
 
@@ -13,7 +13,7 @@
     <form action="post">
         
         {% csrf_token %}
-        {{ form|crispy }}
+    
 
           {{ formIn }}
       <input class="submit-butt" type="submit" >
