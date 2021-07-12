@@ -31,6 +31,7 @@ def contact(request):
 
 
 def signup(request):
+    formIn = SignUpForm
     if request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     else:
