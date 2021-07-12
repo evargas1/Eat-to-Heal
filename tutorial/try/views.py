@@ -47,6 +47,7 @@ def contact(request):
 def signup(request):
     form = SignUpForm(request.POST or None)
     if form.is_valid():
+        print("is valid")
         username = form.cleaned_data.get("username")
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password1")
