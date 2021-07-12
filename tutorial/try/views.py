@@ -32,8 +32,8 @@ def signup(request):
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
-                login(request, user)
-                return HttpResponseRedirect(reverse('contact'))
+                auth_login(request, user)
+                return redirect("/")
         else:
             formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
