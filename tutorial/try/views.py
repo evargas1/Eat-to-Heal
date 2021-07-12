@@ -44,7 +44,7 @@ def signup(request):
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
-                formIn.save(using='db2')
+                formIn.save()
                 return HttpResponseRedirect('/login/')
             else:
                  formIn = SignUpForm
