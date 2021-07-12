@@ -29,11 +29,12 @@ def signup(request):
             formIn = SignUpForm(request.POST)
             if formIn.is_valid():
                 
-                formIn.save(using='db2')
+                
                 username = formIn.cleaned_data.get('username')
                 raw_password = formIn.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 auth_login(request, user)
+                formIn.save(using='db2')
             return HttpResponseRedirect(reverse('contact'))
         else:
             formIn = SignUpForm
