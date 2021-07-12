@@ -20,7 +20,7 @@ def index(request):
     return render(request, 'try/index.html', context)
 
 def login(request):
-    form = LoginForm(request.post or None)
+    form = LoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
@@ -45,7 +45,7 @@ def contact(request):
 
 
 def signup(request):
-    form = SignUpForm(request.post or None)
+    form = SignUpForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         email = form.cleaned_data.get("email")
