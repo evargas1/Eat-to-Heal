@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
+# from .forms import SignUpForm
 from django.core.mail import send_mail
 from django.urls import reverse
 # from .models import Contact, ContactForm, Blog
@@ -12,7 +12,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
+from .forms import LoginForm, SignUpForm
 
 
 def index(request):
@@ -20,8 +20,22 @@ def index(request):
     return render(request, 'try/index.html', context)
 
 def login(request):
+    form = LoginForm(request.post or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+
+        user = authenticate(request, username=username, password=password)
+        if user == None:
+            # attempt = request.session.get("attemplt") or 0
+            # request.session['attempt'] += 1
+            request.session['invalid_user'] = 1
+            return render(request, "try/login.html", {"form": form})
+        auth_login(request, user)
+        return HttpResponseRedirect('/dashboard/')
+
     
-    return render(request, 'try/login.html', {})
+    return render(request, 'try/login.html', {"form": form})
 
 
 
@@ -31,24 +45,29 @@ def contact(request):
 
 
 def signup(request):
-    formIn = SignUpForm
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('/login/')
-    else:
-        if request.method == 'POST':
-            formIn = SignUpForm(request.POST)
-            if formIn.is_valid():
-                formIn.save()
-                
-                username = formIn.cleaned_data.get('username')
-                raw_password = formIn.cleaned_data.get('password1')
-                user = authenticate(username=username, password=raw_password)
-                login(request, user)
-                
-                return HttpResponseRedirect('/login/')
-            else:
-                 formIn = SignUpForm
-    return render(request, 'try/register.html', {'formIn': formIn})
+    form = SignUpForm(request.post or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password1")
+        password2 = form.cleaned_data.get("password2")
+        try:
+            user = User.objects.create_user(username, email, password)
+        except:
+            user = None
+
+        if user != None:
+            auth_login(request, user)
+            # attempt = request.session.get("attemplt") or 0
+            # request.session['attempt'] += 1
+            
+            return HttpResponseRedirect('/dashboard/')
+        else:
+            request.session['register_error'] = 1
+     
+
+    
+    return render(request, 'try/login.html', {"form": form})
 
 def aboutus(request):
     context = {}
