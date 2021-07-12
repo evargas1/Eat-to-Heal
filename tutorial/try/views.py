@@ -1,63 +1,32 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-# from .forms import SignUpForm
+from .forms import SignUpForm
+from django.core.mail import send_mail
+from django.urls import reverse
+from .models import Contact, ContactForm, Blog
+import requests
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-import requests
-from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Contact, ContactForm
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate
-# from .forms import SignUpForm
 
-# Create your views here.
+
 def index(request):
-    return render(request, 'try/index.html', context={})
-
-def aboutus(request):
-    # configure and can see
-    return render(request, 'try/about-us.html', context={})
+    context = {}
+    return render(request, 'try/index.html', context)
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
+    context = {}
+    return render(request, 'try/contact.html', context)
 
-        if form.is_valid():
-            form.save()
-            # some sort of action needs to be performed here
-            # (1) save data
-            # (2) send an email ####
-            # (3) return search result
-            # (4) upload a file
-            return HttpResponseRedirect('/')
-    else:
-        form = ContactForm()
-
-
-    return render(request, 'try/contact.html', {'form': form})
-    # configure and can see
-    
-@login_required(login_url='/login/')
-def dashboard(request):
-    if request.method == 'POST':
-        auth_logout(request)
-
-        return redirect('/login/')
-
-    return render(request, 'try/dashboard.html', context={})
-
-def login(request):
+def signup(request):
     if request.user.is_authenticated:
-        return redirect('/dashboard/')
+        return redirect('/welcome-back/')
     else:
-
-        form = AuthenticationForm()
-    
         if request.method == 'POST':
+<<<<<<< HEAD
 
             username = request.POST['username']
             password = request.POST['password']
@@ -87,3 +56,16 @@ def signup(request):
     #     form = SignUpForm()
 
     return render(request, 'try/register.html', {})
+=======
+            formIn = SignUpForm(request.POST)
+            if formIn.is_valid():
+                formIn.save()
+                username = formIn.cleaned_data.get('username')
+                raw_password = formIn.cleaned_data.get('password1')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                return HttpResponseRedirect(reverse('contact'))
+        else:
+            formIn = SignUpForm
+    return render(request, 'try/register.html', {'formIn': formIn})
+>>>>>>> 43aed833a4ea1066b107400ac664c5c87b296cee

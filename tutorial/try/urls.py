@@ -1,15 +1,10 @@
-from django.urls import path
-
-from . import views
+from django.contrib import admin
+from django.urls import path, include
+from .views import *
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('aboutus/', views.aboutus, name='aboutus'),
-
-    path('contact/', views.contact, name='contact'),
-    path('login/', views.login, name='login'),
+    path('', views,contact, name='contact'),
     path('signup/', views.signup, name='signup'),
-    # path('register/', views.register, name='register'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-
 ]
