@@ -60,14 +60,16 @@ class SignUpForm(forms.Form):
     def clean_username(self):
         username = self.cleaned_data.get("username")
         qs = User.objects.filter(username__iexact=username)
+        qs.save()
         if qs.exists():
             raise forms.ValidationError("This is an invalid username")
 
         return username
 
-    def clean_username(self):
+    def clean_email(self):
         email = self.cleaned_data.get("email")
         qs = User.objects.filter(email__iexact=email)
+        qs.save()
         if qs.exists():
             raise forms.ValidationError("This is an invalid email")
 
