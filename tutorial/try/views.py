@@ -38,4 +38,15 @@ def signup(request):
             formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
 
+def aboutus(request):
+    context = {}
+    return render(request, 'try/about-us.html', context)
     
+
+def dashboard(request):
+    context = {}
+    return render(request, 'try/dashboard.html', context)
+
+def login(request):
+    context = {}
+    return render(request, 'try/login.html', context)
