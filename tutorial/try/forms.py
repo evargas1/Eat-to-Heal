@@ -19,3 +19,6 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class NameForm(forms.Form):
+    your_name = forms.CharField(label='Your Name', max_length=100)

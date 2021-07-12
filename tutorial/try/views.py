@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
@@ -17,9 +18,21 @@ def index(request):
     context = {}
     return render(request, 'try/index.html', context)
 
-def contact(request):
+def login(request):
     context = {}
-    return render(request, 'try/contact.html', context)
+    return render(request, 'try/login.html', context)
+
+def contact(request):
+    if request.method == 'POST':
+        # create a form instance
+        form = NameForm(request.POST)
+        # check to valid
+        if form.is_valid():
+            return HttpResponseRedirect('/login/')
+    else:
+        form = NameForm()
+    
+    return render(request, 'try/contact.html', {'form':form})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -35,9 +48,9 @@ def signup(request):
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
                 formIn.save(using='db2')
-            return HttpResponseRedirect(reverse('contact'))
-        else:
-            formIn = SignUpForm
+                return HttpResponseRedirect(reverse('contact'))
+            else:
+                 formIn = SignUpForm
     return render(request, 'try/register.html', {'formIn': formIn})
 
 def aboutus(request):
@@ -49,6 +62,4 @@ def dashboard(request):
     context = {}
     return render(request, 'try/dashboard.html', context)
 
-def login(request):
-    context = {}
-    return render(request, 'try/login.html', context)
+
