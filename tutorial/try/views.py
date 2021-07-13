@@ -138,7 +138,8 @@ def signup(request):
                 return HttpResponseRedirect(reverse('dashboard'))
         else:
             form = SignUpForm
-    return render(request, 'try/register.html', {'form': form})
+            context = {}
+    return render(request, 'try/register.html', {})
 
 
 
