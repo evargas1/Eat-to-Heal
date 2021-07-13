@@ -40,6 +40,28 @@ def index(request):
     
 #     return render(request, 'try/login.html', {"form": form})
 
+
+def aboutus(request):
+    context = {}
+    return render(request, 'try/about-us.html', context)
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            # some sort of action needs to be performed here
+            # (1) save data
+            # (2) send an email ####
+            # (3) return search result
+            # (4) upload a file
+            return HttpResponseRedirect(reverse('aboutus'))
+    else:
+        form = ContactForm()
+    return render(request, 'try/contact.html', {'form': form})
+
 def login(request):
     if request.user.is_authenticated:
         return redirect('/dashboard/')
@@ -63,21 +85,6 @@ def login(request):
     return render(request, 'try/login.html', {'form':form})
 
 
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            # some sort of action needs to be performed here
-            # (1) save data
-            # (2) send an email ####
-            # (3) return search result
-            # (4) upload a file
-            return HttpResponseRedirect(reverse('aboutus'))
-    else:
-        form = ContactForm()
-    return render(request, 'try/contact.html', {'form': form})
 
 
 # def signup(request):
@@ -132,9 +139,6 @@ def signup(request):
 
 
 
-def aboutus(request):
-    context = {}
-    return render(request, 'try/about-us.html', context)
     
 
 @login_required(login_url='/login/')
