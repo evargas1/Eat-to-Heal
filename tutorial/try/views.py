@@ -123,8 +123,13 @@ def aboutus(request):
     context = {}
     return render(request, 'try/about-us.html', context)
     
-
+    
+@login_required(login_url='/login/')
 def dashboard(request):
+    if request.method == 'POST':
+        auth_logout(request)
+
+        return redirect('/login/')
     context = {}
     return render(request, 'try/dashboard.html', context)
 
