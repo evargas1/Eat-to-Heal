@@ -87,8 +87,8 @@ def signup(request):
             form = SignUpForm(request.POST)
             if form.is_valid():
                 form.save()
-                username = formIn.cleaned_data.get('username')
-                raw_password = formIn.cleaned_data.get('password1')
+                username = form.cleaned_data.get('username')
+                raw_password = form.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 auth_login(request, user)
                 return HttpResponseRedirect(reverse('dashboard'))
