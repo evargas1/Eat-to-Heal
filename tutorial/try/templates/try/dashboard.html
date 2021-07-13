@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<h2>Welcome back {{ request.user|title }} !</h2>
+{% comment %} <h2>Welcome back {{ request.user|title }} !</h2> {% endcomment %}
 <div class="dashboard">
   <div class="small-container">
-    <div class="name-w">
-      <h1>Welcome Jack!</h1>
+    <div class="name-w" style="text-align: center;">
+      <h1 style="padding-bottom: 50px;">Welcome  {{ request.user|title }} </h1>
       <form method="post" action="">
         {% csrf_token %}
         
