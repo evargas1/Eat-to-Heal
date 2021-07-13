@@ -46,36 +46,55 @@ def contact(request):
     return render(request, 'try/contact.html', {})
 
 
-def signup(request):
-    form = SignUpForm(request.POST or None)
-    if form.is_valid():
+# def signup(request):
+#     form = SignUpForm(request.POST or None)
+#     if form.is_valid():
         
-        print("is valid")
-        username = form.cleaned_data.get("username")
-        email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password1")
-        password2 = form.cleaned_data.get("password2")
-        try:
-            user = User.objects.create_user(username, email, password)
-            form.save()
-        except:
-            user = None
+#         print("is valid")
+#         username = form.cleaned_data.get("username")
+#         email = form.cleaned_data.get("email")
+#         password = form.cleaned_data.get("password1")
+#         password2 = form.cleaned_data.get("password2")
+#         try:
+#             user = User.objects.create_user(username, email, password)
+#             form.save()
+#         except:
+#             user = None
 
-        if user != None:
-            auth_login(request, user)
-            form.save()
-            # form.save(commit=false)  
+#         if user != None:
+#             auth_login(request, user)
+#             form.save()
+#             # form.save(commit=false)  
             
-            # attempt = request.session.get("attemplt") or 0
-            # request.session['attempt'] += 1
+#             # attempt = request.session.get("attemplt") or 0
+#             # request.session['attempt'] += 1
             
-            return HttpResponseRedirect('/dashboard/')
-        else:
-            request.session['register_error'] = 1
+#             return HttpResponseRedirect('/dashboard/')
+#         else:
+#             request.session['register_error'] = 1
      
 
     
-    return render(request, 'try/login.html', {"form": form})
+#     return render(request, 'try/login.html', {"form": form})
+
+
+
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('/dashboard/')
+    else:
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                form.save()
+                username = formIn.cleaned_data.get('username')
+                raw_password = formIn.cleaned_data.get('password1')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            form = SignUpForm
+    return render(request, 'try/register.html', {'form': form})
 
 def aboutus(request):
     context = {}
