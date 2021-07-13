@@ -31,26 +31,24 @@
     
   </div>
   <div class="form-sec" style="height: 80vh;">>
-    <form method="post" >
+    <form method="post">
 
       {% csrf_token %}
 
-      <!-- <div class="input-box" style="padding: 15px;">
-        <label for="id_password">Password: </label>
-        <input id="id_password" type="password" name="password" required>
-      </div> -->
+     
 
         <div class="input-box" style="padding: 15px;">
           <label for="id_name">Full Name: </label>
           <input id="id_name" type="text" name="name">
         </div>
 
-        <div class="input-box">
+        <div class="input-box" style="padding: 15px;">
           <label for="id_subject">Inquiring About: </label>
-          <input id="is_subject" type="options" name="subject">
+          <input id="id_subject" type="options" name="subject">
+          <!-- <select name="" id=""></select> -->
         </div>
 
-        <div class="input-box">
+        <div class="input-box" style="padding: 15px;">
           <label for="id_sender">Your Email: </label>
           <input id="id_sender" type="email" name="sender">
         </div>
