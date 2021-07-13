@@ -21,24 +21,45 @@ def index(request):
     context = {}
     return render(request, 'try/index.html', context)
 
-def login(request):
-    form = LoginForm(request.POST or None)
-    if form.is_valid():
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("password")
+# def login(request):
+#     form = LoginForm(request.POST or None)
+#     if form.is_valid():
+#         username = form.cleaned_data.get("username")
+#         password = form.cleaned_data.get("password")
 
-        user = authenticate(request, username=username, password=password)
-        if user == None:
-            # attempt = request.session.get("attemplt") or 0
-            # request.session['attempt'] += 1
-            request.session['invalid_user'] = 1
-            return render(request, "try/login.html", {"form": form})
-        auth_login(request, user)
-        return HttpResponseRedirect('/dashboard/')
+#         user = authenticate(request, username=username, password=password)
+#         if user == None:
+#             # attempt = request.session.get("attemplt") or 0
+#             # request.session['attempt'] += 1
+#             request.session['invalid_user'] = 1
+#             return render(request, "try/login.html", {"form": form})
+#         auth_login(request, user)
+#         return HttpResponseRedirect('/dashboard/')
 
     
-    return render(request, 'try/login.html', {"form": form})
+#     return render(request, 'try/login.html', {"form": form})
 
+def login(request):
+    if request.user.is_authenticated:
+        return redirect('/dashboard/')
+    else:
+
+        form = AuthenticationForm()
+    
+        if request.method == 'POST':
+
+            username = request.POST['username']
+            password = request.POST['password']
+            # check if user is in database
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                auth_login(request, user)
+                return redirect('/dashboard/')
+            else:
+                messages.info(request, "username or password is incorrect")
+       
+    return render(request, 'try/login.html', {'form':form})
 
 
 def contact(request):
