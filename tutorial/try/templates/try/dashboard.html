@@ -6,8 +6,8 @@
 {% comment %} <h2>Welcome back {{ request.user|title }} !</h2> {% endcomment %}
 <div class="dashboard" style="height: 80vh;">
   <div class="small-container">
-    <div class="name-w" style="text-align: center;" style="padding-top: 80px;">
-      <h1 style="padding-bottom: 50px;">Welcome  {{ request.user|title }} </h1>
+    <div class="name-w" style="text-align: center;">
+      <h1 style="padding-bottom: 50px;" style="padding-top: 80px;" >Welcome  {{ request.user|title }} </h1>
       <form method="post" action="">
         {% csrf_token %}
         
