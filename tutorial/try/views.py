@@ -14,6 +14,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpForm
+from .models import Contact, ContactForm
 
 User = get_user_model()
 
@@ -63,8 +64,20 @@ def login(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
 
-    return render(request, 'try/contact.html', {})
+        if form.is_valid():
+            form.save()
+            # some sort of action needs to be performed here
+            # (1) save data
+            # (2) send an email ####
+            # (3) return search result
+            # (4) upload a file
+            return HttpResponseRedirect(reverse('thanks'))
+    else:
+        form = ContactForm()
+    return render(request, 'try/contact.html', {'form': form})
 
 
 # def signup(request):
@@ -123,7 +136,7 @@ def aboutus(request):
     context = {}
     return render(request, 'try/about-us.html', context)
     
-    
+
 @login_required(login_url='/login/')
 def dashboard(request):
     if request.method == 'POST':
