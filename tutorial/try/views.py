@@ -74,7 +74,7 @@ def contact(request):
             # (2) send an email ####
             # (3) return search result
             # (4) upload a file
-            return HttpResponseRedirect(reverse('thanks'))
+            return HttpResponseRedirect(reverse('aboutus'))
     else:
         form = ContactForm()
     return render(request, 'try/contact.html', {'form': form})
