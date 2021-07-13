@@ -49,7 +49,7 @@ def contact(request):
 def signup(request):
     form = SignUpForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        
         print("is valid")
         username = form.cleaned_data.get("username")
         email = form.cleaned_data.get("email")
@@ -57,11 +57,13 @@ def signup(request):
         password2 = form.cleaned_data.get("password2")
         try:
             user = User.objects.create_user(username, email, password)
+            form.save()
         except:
             user = None
 
         if user != None:
             auth_login(request, user)
+            form.save()
             # form.save(commit=false)  
             
             # attempt = request.session.get("attemplt") or 0
