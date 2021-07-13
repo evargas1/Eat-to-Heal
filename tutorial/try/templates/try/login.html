@@ -14,7 +14,19 @@
     <form method="post">
 
         {% csrf_token %}
-        {{ form }}
+        
+
+        <div class="input-box">
+          <label for="id_username">Username: </label>
+          <input id="id_username" type="text" name="username" required>
+        </div>
+        <div class="input-box">
+          <label for="id_password">Password: </label>
+          <input id="id_password" type="text" name="password" required>
+        </div>
+
+        <!-- <p><label for="id_subject">Subject:</label>
+    <input id="id_subject" type="text" name="subject" maxlength="100" required></p> -->
 
       <input class="submit-butt" type="submit" value="Submit">
       <p>Don't Have an Account?</p>

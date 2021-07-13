@@ -65,16 +65,17 @@ def contact(request):
 
 
 def login(request):
+    context = {}
     if request.user.is_authenticated:
         return redirect('/dashboard/')
     else:
 
-        form = AuthenticationForm()
+        # form = AuthenticationForm()
     
         if request.method == 'POST':
 
-            username = request.POST['username']
-            password = request.POST['password']
+            username = request.POST.get('username')
+            password = request.POST.get('password')
             # check if user is in database
             user = authenticate(username=username, password=password)
 
@@ -84,7 +85,7 @@ def login(request):
             else:
                 messages.info(request, "username or password is incorrect")
        
-    return render(request, 'try/login.html', {'form':form})
+    return render(request, 'try/login.html', context)
 
 
 
