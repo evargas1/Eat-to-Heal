@@ -28,26 +28,26 @@ from django.forms import ModelForm
 
 # class SignUpForm()
 
-# class LoginForm(forms.Form):
-#     username = forms.CharField()
-#     # typically used on senstieve data
-#     password = forms.CharField(
-#         widget=forms.PasswordInput
-#     )
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    # typically used on senstieve data
+    password = forms.CharField(
+        widget=forms.PasswordInput
+    )
 
-    # def clean(self):
-    #     username = self.cleaned_data.get("username")
-    #     password = self.cleaned_data.get("password")
+    def clean(self):
+        username = self.cleaned_data.get("username")
+        password = self.cleaned_data.get("password")
 
 
 
-#     def clean_username(self):
-#         username = self.cleaned_data.get("username")
-#         qs = User.objects.filter(username__iexact=username)
-#         if not qs.exists():
-#             raise forms.ValidationError("This is an invalid error")
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        qs = User.objects.filter(username__iexact=username)
+        if not qs.exists():
+            raise forms.ValidationError("This is an invalid error")
 
-#         return username
+        return username
 
 
 
