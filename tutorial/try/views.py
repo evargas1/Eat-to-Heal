@@ -57,10 +57,12 @@ def contact(request):
             # (2) send an email ####
             # (3) return search result
             # (4) upload a file
-            return HttpResponseRedirect(reverse('aboutus'))
+            return HttpResponseRedirect(reverse(''))
     else:
         form = ContactForm()
     return render(request, 'try/contact.html', {'form': form})
+
+
 
 def login(request):
     if request.user.is_authenticated:
@@ -71,8 +73,8 @@ def login(request):
     
         if request.method == 'POST':
 
-            username = request.POST('username')
-            password = request.POST('password')
+            username = request.POST['username']
+            password = request.POST['password']
             # check if user is in database
             user = authenticate(username=username, password=password)
 
