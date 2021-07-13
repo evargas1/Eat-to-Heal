@@ -71,8 +71,8 @@ def login(request):
     
         if request.method == 'POST':
 
-            username = request.POST['username']
-            password = request.POST['password']
+            username = request.POST('username')
+            password = request.POST('password')
             # check if user is in database
             user = authenticate(username=username, password=password)
 
