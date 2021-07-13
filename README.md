@@ -1,4 +1,4 @@
-# Eat-to-Heal
+# Eat to Heal
 A website that was created to practice user authentication and forms. Book an appointment with a nutritionist via zoom. Login or register to view client dashboard.
 
 Eat To Heal is a fully functioning webiste were visitors can book an appointment or get in contact with a certificated nutritionist. You can also navigate to the 
