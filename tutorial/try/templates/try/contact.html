@@ -4,24 +4,88 @@
 {% block content %}
 
 
-{% comment %} 
-<div class="box" id="form-wrapper">
-  <form action="" id="form">
-      <div id="user-info">
-          <!-- the user will be prompoted to enter personal infomation -->
-          <div class="form-field2">
-              <input required class="form-control" type="text" name="name" placeholder="Name...">
-          </div>
-          <div class="form-field2">
-              <input required class="form-control" type="email" name="email" placeholder="Email...">
-          </div>
-
-      </div>
+<style>
+  .new-fun-city{
+      padding: 10px;
+      align-items: center !important;
+      text-align: center !important;
+      width: max-content !important;
+      justify-content: center !important;
+      align-content: center !important;
+      align-self: center;
+      margin: auto;
+      width: max-content;
+  }
+  .form-area{
+      text-align: center !important;
+      min-width: 300px;
+      max-width: max-content;
+      box-shadow: 12px 12px 2px 1px rgba(231, 226, 226, 0.685);
+      padding: 20px;
   
-      <input id="form-button" class="btn-success" type="submit" value="Continue">
-  </form>
-
-</div> {% endcomment %}
+  }
+  .main-from-tit h1{
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+  
+  }
+  .input-box{
+      width: max-content;
+  
+  }
+  .input-box label{
+      font-size: 20px;
+  }
+  .input-box input{
+      padding: 10px 15px;
+      border: 1px;
+      border-color: rgb(180, 176, 219);
+      border-radius: 10px;
+      background-color: rgb(236, 227, 227);
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin: 10px;
+      width: 300px;
+  }
+  .submit-butt{
+      background-color: rgb(134, 189, 120);
+      border: none;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      width: 100px;
+      margin: 15px;
+      font-size: 18px !important;
+      letter-spacing: 1px;
+      transition: 0.5s;
+  }
+  .submit-butt:hover{
+      background-color: rgb(53, 109, 63);
+      color: #fff;
+  }
+  
+  .go-back{
+      background-color: rgb(151, 135, 135);
+      border-radius: 10px;
+      width: 150px;
+      text-align: center;
+  }
+  .go-back button{
+      padding: 10px 15px;
+      background-color: rgb(151, 135, 135);
+      border: none;
+      text-decoration: none;
+      color: #fff;
+      letter-spacing: 1px;
+      width: 150px;
+      border-radius: 10px;
+  
+  }
+  .go-back button:hover{
+      background-color:rgb(99, 85, 85) ;
+  }
+  </style>
 
 
 
@@ -30,45 +94,62 @@
     <h1>Welcome! We Love Your Feedback</h1>
     
   </div>
-  <div class="form-sec" style="height: 80vh;">
-    <form method="post">
 
-      {% csrf_token %}
 
+
+  <div class="new-fun-city">
+    <div class="go-back">
+      <a href="{% url 'index' %}"><button>Go Back</button></a>
+    </div>
+    <div class="form-area">
+      <div class="main-form-tit">
+        <h1>Contact us</h1>
+      </div>
+      <div class="form-sec">
+        <form method="post">
+
+          {% csrf_token %}
+    
+         
+    
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_name"> </label>
+              <input id="id_name" type="text" name="name" placeholder="Full Name">
+            </div>
+    
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_subject">Inquiring About: </label>
+              <!-- <input id="id_subject" type="options" name="subject"> -->
+              <select name="subject" id="id_subject">
+                <option value="Questions">Questions</option>
+                <option value="Book Consulation">Book Consulation</option>
+                <option value="Request More Reviews">Request More Reviews</option>
+                <option value="Contact a Specialist">Contact a Specialist</option>
+                <option value="Bussiness Inquery">Bussiness Inquery</option>
+    
+    
+              </select>
+            </div>
+    
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_sender"> </label>
+              <input id="id_sender" type="email" name="sender" placeholder="Your Email">
+            </div>
+    
+          <div class="add-space">
+            <input class="submit-butt" type="submit" value="Submit">
+          </div>
+          <div class="butt-center">
+            <div class="custom-butt"><a href="{% url 'login' %}">Login To Your Account</a>  &#10230;</div>
+          </div>
+        </form>
+        
+      </div>
+      
      
-
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_name">Full Name: </label>
-          <input id="id_name" type="text" name="name">
-        </div>
-
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_subject">Inquiring About: </label>
-          <!-- <input id="id_subject" type="options" name="subject"> -->
-          <select name="subject" id="id_subject">
-            <option value="Questions">Questions</option>
-            <option value="Book Consulation">Book Consulation</option>
-            <option value="Request More Reviews">Request More Reviews</option>
-            <option value="Contact a Specialist">Contact a Specialist</option>
-            <option value="Bussiness Inquery">Bussiness Inquery</option>
-
-
-          </select>
-        </div>
-
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_sender">Your Email: </label>
-          <input id="id_sender" type="email" name="sender">
-        </div>
-
-      <div class="add-space">
-        <input class="submit-butt" type="submit" value="Submit">
-      </div>
-      <div class="butt-center">
-        <div class="custom-butt"><a href="{% url 'login' %}">Login To Your Account</a>  &#10230;</div>
-      </div>
-    </form>
+    </div>
   </div>
+
 
 </div>
 
