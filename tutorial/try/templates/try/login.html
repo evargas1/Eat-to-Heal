@@ -4,40 +4,138 @@
 {% block content %}
 
 
+<style>
+  .new-fun-city{
+      padding: 10px;
+      align-items: center !important;
+      text-align: center !important;
+      width: max-content !important;
+      justify-content: center !important;
+      align-content: center !important;
+      align-self: center;
+      margin: auto;
+      width: max-content;
+  }
+  .form-area{
+      text-align: center !important;
+      min-width: 300px;
+      max-width: max-content;
+      box-shadow: 12px 12px 2px 1px rgba(231, 226, 226, 0.685);
+      padding: 20px;
+  
+  }
+  .main-from-tit h1{
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+  
+  }
+  .input-box{
+      width: max-content;
+  
+  }
+  .input-box label{
+      font-size: 20px;
+  }
+  .input-box input{
+      padding: 10px 15px;
+      border: 1px;
+      border-color: rgb(180, 176, 219);
+      border-radius: 10px;
+      background-color: rgb(236, 227, 227);
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin: 10px;
+      width: 300px;
+  }
+  .submit-butt{
+      background-color: rgb(134, 189, 120);
+      border: none;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      width: 100px;
+      margin: 15px;
+      font-size: 18px !important;
+      letter-spacing: 1px;
+      transition: 0.5s;
+  }
+  .submit-butt:hover{
+      background-color: rgb(53, 109, 63);
+      color: #fff;
+  }
+  
+  .go-back{
+      background-color: rgb(151, 135, 135);
+      border-radius: 10px;
+      width: 150px;
+      text-align: center;
+  }
+  .go-back button{
+      padding: 10px 15px;
+      background-color: rgb(151, 135, 135);
+      border: none;
+      text-decoration: none;
+      color: #fff;
+      letter-spacing: 1px;
+      width: 150px;
+      border-radius: 10px;
+  
+  }
+  .go-back button:hover{
+      background-color:rgb(99, 85, 85) ;
+  }
+  </style>
+
 
 <div class="welcome-page" style="height: 80vh;">
   <div class="welcome-title">
     <h1>Welcome! Please Login</h1>
     
   </div>
-  <div class="form-sec">
-    <form method="post">
 
-        {% csrf_token %}
-        
+  <div class="new-fun-city">
+    <div class="go-back">
+      <a href="{% url 'index' %}"><button>Go Back</button></a>
+    </div>
+    <div class="form-area">
+      <div class="main-form-tit">
+        <h1>Login</h1>
+      </div>
+      <div class="form-sec">
+        <form method="post">
 
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_username">Username: </label>
-          <input id="id_username" type="text" name="username" required>
+          {% csrf_token %}
+          
+  
+          <div class="input-box" style="padding: 15px;">
+            <label for="id_username"> </label>
+            <input id="id_username" type="text" name="username" placeholder="Username" required>
+          </div>
+          <div class="input-box" style="padding: 15px;">
+            <label for="id_password"> </label>
+            <input id="id_password" type="password" name="password" placeholder="Password" required>
+          </div>
+  
+          <!-- <p><label for="id_subject">Subject:</label>
+      <input id="id_subject" type="text" name="subject" maxlength="100" required></p> -->
+  
+        <input style="padding-top: 20px;" class="submit-butt" type="submit" value="Submit">
+        <p>Don't Have an Account?</p>
+        <div class="butt-center" style="padding-top: 20px;">
+          <div class="custom-butt">
+          <a href="{% url 'signup' %}">Register</a>  &#10230;</div>
+          
         </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_password">Password: </label>
-          <input id="id_password" type="password" name="password" required>
-        </div>
-
-        <!-- <p><label for="id_subject">Subject:</label>
-    <input id="id_subject" type="text" name="subject" maxlength="100" required></p> -->
-
-      <input style="padding-top: 20px;" class="submit-butt" type="submit" value="Submit">
-      <p>Don't Have an Account?</p>
-      <div class="butt-center" style="padding-top: 20px;">
-        <div class="custom-butt">
-        <a href="{% url 'signup' %}">Register</a>  &#10230;</div>
         
+      </form>
       </div>
       
-    </form>
+     
+    </div>
   </div>
+
+
 
 </div>
 
