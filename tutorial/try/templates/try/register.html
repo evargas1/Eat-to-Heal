@@ -3,50 +3,139 @@
 
 {% block content %}
 
+<style>
+  .new-fun-city{
+    padding: 10px;
+}
+.form-area{
+    text-align: center;
+    min-width: 300px;
+    max-width: max-content;
+    box-shadow: 12px 12px 2px 1px rgba(15, 15, 15, 0.2);
+    padding: 20px;
+}
+.main-from-tit h1{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+.input-box{
+    width: max-content;
+
+}
+.input-box label{
+    font-size: 20px;
+}
+.input-box input{
+    padding: 10px 15px;
+    border: 1px;
+    border-color: rgb(180, 176, 219);
+    border-radius: 10px;
+    background-color: rgb(236, 227, 227);
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 10px;
+    width: 300px;
+}
+.submit-butt{
+    background-color: rgb(134, 189, 120);
+    border: none;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 100px;
+    margin: 15px;
+    font-size: 18px !important;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+.submit-butt:hover{
+    background-color: rgb(53, 109, 63);
+    color: #fff;
+}
+
+.go-back{
+    background-color: rgb(151, 135, 135);
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+}
+.go-back button{
+    padding: 10px 15px;
+    background-color: rgb(151, 135, 135);
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 1px;
+    width: 150px;
+    border-radius: 10px;
+
+}
+.go-back button:hover{
+    background-color:rgb(99, 85, 85) ;
+}
+</style>
 
 <div class="welcome-page">
   <div class="welcome-title">
     <h1>Welcome! Please Register Here</h1>
     
   </div>
-  <div class="form-sec">
-    <form method="post">
-        
-        {% csrf_token %}
-    
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_username">Username: </label>
-          <input id="id_username" type="text" name="username">
-        </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_first_name">First Name: </label>
-          <input id="id_first_name" type="text" name="first_name">
-        </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_last_name">Last Name: </label>
-          <input id="id_last_name" type="text" name="last_name">
-        </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_email">Email: </label>
-          <input id="id_email" type="email" name="email">
-        </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_password1">Password: </label>
-          <input id="id_password1" type="password" name="password1">
-        </div>
-        <div class="input-box" style="padding: 15px;">
-          <label for="id_password2">Re-enter Password: </label>
-          <input id="id_password2" type="password" name="password2">
-        </div>
-         
 
-      <input class="submit-butt" type="submit" >
-      <p>Have an Account?</p>
-      <div class="butt-center">
-        <div class="custom-butt"><a href="{% url 'login' %}">Login</a>  &#10230;</div>
+
+
+  <div class="new-fun-city">
+    <div class="go-back">
+      <a href="{% 'index' %}"><button>Go Back</button></a>
+    </div>
+    <div class="form-area">
+      <div class="main-form-tit">
+        <h1>Register</h1>
       </div>
-    </form>
+      <div class="form-sec">
+        <form method="post">
+            
+            {% csrf_token %}
+        
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_username"></label>
+              <input id="id_username" type="text" name="username">
+            </div>
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_first_name"></label>
+              <input id="id_first_name" type="text" name="first_name">
+            </div>
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_last_name"></label>
+              <input id="id_last_name" type="text" name="last_name">
+            </div>
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_email"></label>
+              <input id="id_email" type="email" name="email">
+            </div>
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_password1"></label>
+              <input id="id_password1" type="password" name="password1">
+            </div>
+            <div class="input-box" style="padding: 15px;">
+              <label for="id_password2"></label>
+              <input id="id_password2" type="password" name="password2">
+            </div>
+             
+    
+          <input class="submit-butt" type="submit" >
+          <p>Have an Account?</p>
+          <div class="butt-center">
+            <div class="custom-butt"><a href="{% url 'login' %}">Login</a>  &#10230;</div>
+          </div>
+        </form>
+      </div>
+      
+     
+    </div>
   </div>
+
 
 </div>
 
